@@ -12,8 +12,8 @@
     <artifactId>hw5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>hw4</name>
-    <description>hw4</description>
+    <name>hw5</name>
+    <description>hw5</description>
     <url/>
     <licenses>
         <license/>
@@ -69,6 +69,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.mkammerer</groupId>
+            <artifactId>argon2-jvm</artifactId>
+            <version>2.11</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

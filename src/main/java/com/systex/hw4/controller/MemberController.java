@@ -47,6 +47,7 @@ public class MemberController {
         return new ModelAndView("member/sign", "command", new Member());
     }
 
+    //建議使用者
     @PostMapping("/createMember")
     public ModelAndView createMember(@Valid @ModelAttribute Member member,
                                      Model model, BindingResult bindingResult) {
@@ -54,7 +55,9 @@ public class MemberController {
             return new ModelAndView("member/sign", "command", new Member());
         }
         try{
+            //驗證傳入有沒有值
             ValidInput(member);
+
             memberService.saveMember(member);
             return new ModelAndView("redirect:/login");
         }catch (Exception e) {

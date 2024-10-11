@@ -33,10 +33,12 @@ public class LotteryController {
                                   @RequestParam("exclude") Optional<String> excludeNum, Model model) {
         try {
             int group = parseGroup(groupParam);
+
             HashSet<Integer> excludeNumberSet = new HashSet<>();
             if (excludeNum.isPresent() && !excludeNum.get().isEmpty()) {
                 parseExcludeNumber(excludeNum.get(), excludeNumberSet);
             }
+
             ArrayList[] lotterys = lotteryService.getLottery(group, excludeNumberSet);
 
             model.addAttribute("lotterys", lotterys);
@@ -53,6 +55,7 @@ public class LotteryController {
 
     private int parseGroup(Optional<String> groupParam) {
         validGroupParam(groupParam);
+
         String group = groupParam.get();
         return convertStringToNumber(group);
     }
@@ -70,7 +73,6 @@ public class LotteryController {
             excludeNumberSet.add(excludeNumber);
         }
     }
-
 
     private int convertStringToNumber(String num) {
         try {
