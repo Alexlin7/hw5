@@ -30,6 +30,9 @@ public class LoginFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String uri = request.getRequestURI();
         String contextPath = request.getContextPath();
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
 
         boolean isLoginRequest = uri.equalsIgnoreCase(contextPath + "/login");
         boolean isAjaxLoginRequest = uri.equalsIgnoreCase(contextPath + "/ajaxlogin");
@@ -104,7 +107,6 @@ public class LoginFilter extends OncePerRequestFilter {
     private void handleAjaxLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession(true);
         JSONObject jsonResponse = new JSONObject();
