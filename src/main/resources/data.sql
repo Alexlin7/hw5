@@ -1,0 +1,1 @@
+Insert Into Member(username, password) Values('root', '1234');
