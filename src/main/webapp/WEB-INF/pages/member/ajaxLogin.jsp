@@ -26,6 +26,7 @@
     </form:form>
 
     <a href="createMember">註冊帳號</a>
+    <a href="login">form表單登入</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
