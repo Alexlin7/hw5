@@ -1,6 +1,5 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8" %>
 
 <% request.setAttribute("title", "樂透選號結果"); %>
 <jsp:include page="/WEB-INF/layout/layout.jsp"/>

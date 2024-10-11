@@ -1,4 +1,3 @@
-<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="/WEB-INF/layout/layout.jsp"/>
 <% request.setAttribute("title", "註冊"); %>

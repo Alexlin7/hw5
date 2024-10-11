@@ -38,12 +38,12 @@ public class MemberController {
     }
 
     @GetMapping("/ajaxlogin")
-    public ModelAndView ajaxloginView(HttpSession session) {
+    public ModelAndView ajaxloginView() {
         return new ModelAndView("member/ajaxLogin", "command", new Member());
     }
 
     @GetMapping("/createMember")
-    public ModelAndView createMemberView(Member member, Model model) {
+    public ModelAndView createMemberView() {
         return new ModelAndView("member/sign", "command", new Member());
     }
 

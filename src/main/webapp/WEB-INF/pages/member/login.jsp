@@ -1,5 +1,4 @@
-<%@ page import="java.util.LinkedList" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <jsp:include page="/WEB-INF/layout/layout.jsp"/>
 <% request.setAttribute("title", "登入"); %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
