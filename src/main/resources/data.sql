@@ -1,1 +1,0 @@
-Insert Into Member(username, password) Values('root', '$argon2i$v=19$m=65536,t=2,p=1$kRIE8uhTw6s43+5vKD97wQ$dR6xdNywR4PQMy5sLXsBnsh3mHeOokl27SUa0OIQPV4');
