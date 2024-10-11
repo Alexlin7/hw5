@@ -25,7 +25,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public ModelAndView loginView(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("login", "command", new Member());
+        ModelAndView modelAndView = new ModelAndView("member/login", "command", new Member());
 
         // 從 request 中提取錯誤訊息，並添加到模型中
         LinkedList<String> errorMessages = (LinkedList<String>) session.getAttribute("errorMessages");
@@ -39,19 +39,19 @@ public class MemberController {
 
     @GetMapping("/ajaxlogin")
     public ModelAndView ajaxloginView(HttpSession session) {
-        return new ModelAndView("ajaxLogin", "command", new Member());
+        return new ModelAndView("member/ajaxLogin", "command", new Member());
     }
 
     @GetMapping("/createMember")
     public ModelAndView createMemberView(Member member, Model model) {
-        return new ModelAndView("sign", "command", new Member());
+        return new ModelAndView("member/sign", "command", new Member());
     }
 
     @PostMapping("/createMember")
     public ModelAndView createMember(@Valid @ModelAttribute Member member,
                                      Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("sign", "command", new Member());
+            return new ModelAndView("member/sign", "command", new Member());
         }
         try{
             ValidInput(member);
@@ -61,7 +61,7 @@ public class MemberController {
             LinkedList<String> errorMessages = new LinkedList<>();
             errorMessages.add(e.getMessage());
             model.addAttribute("errorMessages", errorMessages);
-            return new ModelAndView("sign", "command", new Member());
+            return new ModelAndView("member/sign", "command", new Member());
         }
     }
 

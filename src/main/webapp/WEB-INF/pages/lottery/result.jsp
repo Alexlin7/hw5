@@ -25,11 +25,11 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	<a href="<%=request.getContextPath()%>/lottery/main">
+	<a href="${pageContext.request.contextPath}/lottery/main">
 		<button class="btn btn btn-secondary">再生成一次</button>
 	</a>
 
-	<a href="<%=request.getContextPath()%>">
+	<a href="${pageContext.request.contextPath}">
 		<button class="btn btn-primary">回首頁</button>
 	</a>
 

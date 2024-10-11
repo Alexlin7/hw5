@@ -3,7 +3,7 @@
 
 <% request.setAttribute("title", "HomeWork3"); %>
 
-<jsp:include page="WEB-INF/layout/layout.jsp" />
+<jsp:include page="../layout/layout.jsp" />
 <body>
 <div class="text-center ">
     <h1>HomeWork 3</h1>
