@@ -47,7 +47,7 @@ public class MemberController {
         return new ModelAndView("member/sign", "command", new Member());
     }
 
-    //建議使用者
+    //建立使用者
     @PostMapping("/createMember")
     public ModelAndView createMember(@Valid @ModelAttribute Member member,
                                      Model model, BindingResult bindingResult) {
