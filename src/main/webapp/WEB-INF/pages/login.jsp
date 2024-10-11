@@ -33,6 +33,7 @@
         <input type="submit" value="登入" class="btn btn-primary" />
     </form:form>
     <a href="createMember">註冊帳號</a>
+    <a href="ajaxlogin">使用AJAX登入</a>
 </div>
 
 </body>

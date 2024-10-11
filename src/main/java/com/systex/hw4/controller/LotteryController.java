@@ -33,7 +33,6 @@ public class LotteryController {
                                   @RequestParam("exclude") Optional<String> excludeNum, Model model) {
         try {
             int group = parseGroup(groupParam);
-
             HashSet<Integer> excludeNumberSet = new HashSet<>();
             if (excludeNum.isPresent() && !excludeNum.get().isEmpty()) {
                 parseExcludeNumber(excludeNum.get(), excludeNumberSet);
@@ -52,19 +51,15 @@ public class LotteryController {
         }
     }
 
+    private int parseGroup(Optional<String> groupParam) {
+        validGroupParam(groupParam);
+        String group = groupParam.get();
+        return convertStringToNumber(group);
+    }
+
     private void validGroupParam(Optional<String> groupParam) {
         if (groupParam.isEmpty() || groupParam.get().isBlank()) {
             throw new IllegalArgumentException("您所輸入的組數為空");
-        }
-    }
-
-    private int parseGroup(Optional<String> groupParam) {
-        validGroupParam(groupParam);
-        try {
-            int group = convertStringToNumber(groupParam.get());
-            return group;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("您所輸入的組數並非為有效數字");
         }
     }
 

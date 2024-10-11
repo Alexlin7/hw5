@@ -2,7 +2,6 @@ package com.systex.hw4.controller;
 
 import com.systex.hw4.model.Member;
 import com.systex.hw4.service.MemberService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.LinkedList;
-import java.util.Optional;
 
 @Controller
 public class MemberController {
@@ -37,6 +35,11 @@ public class MemberController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/ajaxlogin")
+    public ModelAndView ajaxloginView(HttpSession session) {
+        return new ModelAndView("ajaxLogin", "command", new Member());
     }
 
     @GetMapping("/createMember")
