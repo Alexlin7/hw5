@@ -28,9 +28,14 @@ public class LotteryService {
 
     private void generateLotteryNumber(HashSet<Integer> excludeNumberSet, ArrayList<Integer> lottery) {
         int luckNumber = ThreadLocalRandom.current().nextInt(1, 50); //產生1到49的數字
-        if (!excludeNumberSet.contains(luckNumber)) {
-            lottery.add(luckNumber);
+        if (excludeNumberSet.contains(luckNumber)) {
+            return;
         }
+        if(lottery.contains(luckNumber)){
+            return;
+        }
+            
+        lottery.add(luckNumber);
     }
 
 }
