@@ -3,6 +3,7 @@ package com.systex.hw4.service;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,6 +24,9 @@ public class LotteryService {
         while (lottery.size() < 6) {
             generateLotteryNumber(excludeNumberSet, lottery);
         }
+        
+        lottery.sort(Comparator.naturalOrder());
+        
         return lottery;
     }
 
