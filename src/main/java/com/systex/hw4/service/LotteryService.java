@@ -10,19 +10,27 @@ import java.util.concurrent.ThreadLocalRandom;
 @Service
 public class LotteryService {
 
-    public ArrayList[] getLottery(int group, HashSet<Integer> excludeNumberSet) {
+    public ArrayList[] getLottery(int group, HashSet<Integer> excludeNumberSet, Integer maxNumber) {
         ArrayList[] lotterys = new ArrayList[group];
         for (int i = 0; i < group; i++) {
-            lotterys[i] = generateLottery(excludeNumberSet);
+            lotterys[i] = generateLottery(excludeNumberSet, maxNumber);
         }
         return lotterys;
     }
 
-    private ArrayList<Integer> generateLottery(HashSet<Integer> excludeNumberSet) {
+    public ArrayList[] getSuperLottery(int group, HashSet<Integer> excludeNumberSet, Integer maxNumber) {
+        ArrayList[] lotterys = new ArrayList[group];
+        for (int i = 0; i < group; i++) {
+            lotterys[i] = generateLottery(excludeNumberSet, maxNumber);
+        }
+        return lotterys;
+    }
+
+    private ArrayList<Integer> generateLottery(HashSet<Integer> excludeNumberSet, Integer maxNumber) {
         ArrayList<Integer> lottery = new ArrayList<>();
 
         while (lottery.size() < 6) {
-            generateLotteryNumber(excludeNumberSet, lottery);
+            generateLotteryNumber(excludeNumberSet, lottery, maxNumber);
         }
         
         lottery.sort(Comparator.naturalOrder());
@@ -30,8 +38,8 @@ public class LotteryService {
         return lottery;
     }
 
-    private void generateLotteryNumber(HashSet<Integer> excludeNumberSet, ArrayList<Integer> lottery) {
-        int luckNumber = ThreadLocalRandom.current().nextInt(1, 50); //產生1到49的數字
+    private void generateLotteryNumber(HashSet<Integer> excludeNumberSet, ArrayList<Integer> lottery, Integer maxNumber) {
+        int luckNumber = ThreadLocalRandom.current().nextInt(1, maxNumber); //產生1到49的數字
         if (excludeNumberSet.contains(luckNumber)) {
             return;
         }

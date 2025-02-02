@@ -28,6 +28,11 @@ public class LotteryController {
         return "lottery/main";
     }
 
+    @GetMapping("/super_lottery")
+    public String getSuperLotteryPage() {
+        return "lottery/super_lottery";
+    }
+
     @PostMapping("/lotteryController.do")
     public String generateLottery(@RequestParam("group") Optional<String> groupParam,
                                   @RequestParam("exclude") Optional<String> excludeNum, Model model) {
@@ -39,7 +44,32 @@ public class LotteryController {
                 parseExcludeNumber(excludeNum.get(), excludeNumberSet);
             }
 
-            ArrayList[] lotterys = lotteryService.getLottery(group, excludeNumberSet);
+            ArrayList[] lotterys = lotteryService.getLottery(group, excludeNumberSet, 50);
+
+            model.addAttribute("lotterys", lotterys);
+            model.addAttribute("excludeNumber", excludeNumberSet);
+            return "lottery/result";
+
+        }  catch (Exception e) {
+            LinkedList<String> errorMessages = new LinkedList<>();
+            errorMessages.add(e.getMessage());
+            model.addAttribute("errorMessages", errorMessages);
+            return "lottery/main";
+        }
+    }
+
+    @PostMapping("/superLotteryController.do")
+    public String generateSuperLottery(@RequestParam("group") Optional<String> groupParam,
+                                  @RequestParam("exclude") Optional<String> excludeNum, Model model) {
+        try {
+            int group = parseGroup(groupParam);
+
+            HashSet<Integer> excludeNumberSet = new HashSet<>();
+            if (excludeNum.isPresent() && !excludeNum.get().isEmpty()) {
+                parseExcludeNumber(excludeNum.get(), excludeNumberSet);
+            }
+
+            ArrayList[] lotterys = lotteryService.getSuperLottery(group, excludeNumberSet, 37);
 
             model.addAttribute("lotterys", lotterys);
             model.addAttribute("excludeNumber", excludeNumberSet);

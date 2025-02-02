@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<% request.setAttribute("title", "樂透選號"); %>
+<% request.setAttribute("title", "威力彩選號"); %>
 
 <jsp:include page="/WEB-INF/layout/layout.jsp"/>
 
@@ -18,9 +18,8 @@
         </c:forEach>
     </c:if>
 
-    <a href="${pageContext.request.contextPath}/lottery/super_lottery"> 威力彩</a>
 
-    <form action="lotteryController.do" method="POST">
+    <form action="superLotteryController.do" method="POST">
         <div class="mb-3">
             <label id="grouplabel" name="lable" class="form-label">組數</label>
             <input type="number" id="group" name="group" class="form-control" value="${ param.group }"/>
